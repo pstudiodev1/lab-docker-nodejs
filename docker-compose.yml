@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+    # nginx:
+    #     container_name: frontend-www
+    #     image: nginx:latest
+    #     restart: always
+    #     volumes:
+    #         - ./docker/nginx/config:/etc/nginx/conf.d
+    #     ports: 
+    #         - "8080:80"
+    app:
+        container_name: app
+        image: node:latest
+        command: bash -c "npm install -g npm@latest && npm install && node /app/bin/www"
+        working_dir: /app
+        volumes: 
+            - .:/app
+        ports: 
+            - "3000:3000"
