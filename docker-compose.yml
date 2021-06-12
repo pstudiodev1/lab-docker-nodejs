@@ -1,14 +1,15 @@
 version: "3.7"
 
 services:
-    # nginx:
-    #     container_name: frontend-www
-    #     image: nginx:latest
-    #     restart: always
-    #     volumes:
-    #         - ./docker/nginx/config:/etc/nginx/conf.d
-    #     ports: 
-    #         - "8080:80"
+    nginx:
+        container_name: nginx
+        image: nginx:latest
+        volumes:
+            - ./docker/nginx/config:/etc/nginx/conf.d
+        ports: 
+            - "80:80"
+        depends_on: 
+            - app
     app:
         container_name: app
         image: node:latest
